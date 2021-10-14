@@ -1,0 +1,72 @@
+using System;
+
+namespace FisherYatesSuffle
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            string Letters = "";
+
+            Letters = Console.ReadLine();
+
+            Console.ReadKey();
+
+
+            int Crap = 0;
+
+            int Count = 0;
+
+            Crap = Letters.Length;
+
+            char[] Array = new Char[Crap];
+
+            Char[] RandomArray = new char[Crap];
+
+            Count = 0;
+
+            Random Randy = new Random();
+
+            for (int p = 0; p < Crap; p++)
+            {
+                Array[p] = ' ';
+                RandomArray[p] = ' ';
+            }
+
+            for (int i = 0; i < Crap; i++)
+            {
+                Array[i] = Letters[i];
+                //Console.WriteLine(Array[i]);
+            }
+
+            int here = 0;
+
+            while (Count < Crap)
+            {
+                here = Randy.Next(0, Crap);
+
+                if (Array[here] != '~')
+                {
+                    RandomArray[Count] = Array[here];
+                    //Console.WriteLine(RandomArray[Count]);
+                    Array[here] = '~';
+                    Count = Count + 1;
+                    //Console.WriteLine(Count);
+                    //Console.WriteLine(RandomArray[Count-1] + " " +  Array[here]);
+                }
+            }
+
+            string Final = "";
+
+            for (int a = 0; a < Crap; a++)
+            {
+                Final = Final + RandomArray[a];
+            }
+
+            Console.WriteLine(Final);
+            Console.WriteLine("There this many letters: " + " " + Count);
+            Console.ReadKey();
+        }
+    }
+}
